@@ -1,0 +1,50 @@
+body,html{
+    height:100%; /*Siempre es necesario cuando trabajamos con alturas*/
+    }
+#menuInferior{
+    position:absolute; /*El div será ubicado con relación a la pantalla*/
+    left:0px; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:0px; /*Abajo deje un espacio de 0px*/
+    height:50px; /*alto del div*/
+    z-index:0;
+}
+#contenidoMenuInferior{
+    align-items: center;
+    align-content: center;
+}
+#mobile-demo{
+    background: white;
+}
+#menuSuperiorNav {
+    background-color:#0000003d;
+    height: 60px;
+}
+#menuSuperior{
+    background-image: url('../../files/fondo.jpg');
+}
+#cuadroDeHonor{
+    background-color: #d4d4d4;
+    
+}
+nav.nav-center ul {
+    text-align: center;
+}
+nav.nav-center ul li {
+    display: inline;
+    float: none;
+}
+nav.nav-center ul li a {
+    display: inline-block;
+}
+#botones{
+    justify-content: space-around;
+    display: flex;
+}
+.btn-margin{
+    margin-left: 10px;
+}
+iframe {
+    max-width: 100%;
+    height: auto;
+}
