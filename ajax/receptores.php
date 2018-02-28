@@ -8,7 +8,7 @@ $nombre=isset($_POST["nomRec"])? limpiarCadena($_POST["nomRec"]):"";
 $apellido=isset($_POST["apRec"])? limpiarCadena($_POST["apRec"]):"";
 $dni=isset($_POST["dniRec"])? limpiarCadena($_POST["dniRec"]):"";
 $cel=isset($_POST["celRec"])? limpiarCadena($_POST["celRec"]):"";
-$correo=isset($_POST["correoRec"])? limpiarCadena($_POST["correoRec"]):"";
+$fnac=isset($_POST["fnacRec"])? limpiarCadena($_POST["fnacRec"]):"";
 $cMedico_id=isset($_POST["cMedicoRec"])? limpiarCadena($_POST["cMedicoRec"]):"";
 $tsangre_id=isset($_POST["tsangreRec"])? limpiarCadena($_POST["tsangreRec"]):"";
 $necesita=isset($_POST["necesitaRec"])? limpiarCadena($_POST["necesitaRec"]):"";
@@ -17,14 +17,13 @@ $descripcion=isset($_POST["descripcionRec"])? limpiarCadena($_POST["descripcionR
 $caso=isset($_POST["casoRec"])? limpiarCadena($_POST["casoRec"]):"";
 $foto=isset($_POST["fotosRec"])? limpiarCadena($_POST["fotosRec"]):"";
 $codigo=isset($_POST["codigoRec"])? limpiarCadena($_POST["codigoRec"]):"";
+$idDon=isset($_POST["donanteD"])? limpiarCadena($_POST["donanteD"]):"59";//********** */
 $likes=isset($_POST["likesRec"])? limpiarCadena($_POST["likesRec"]):"";
 $estado=isset($_POST["estadoRec"])? limpiarCadena($_POST["estadoRec"]):"";
-$valorRecibido=isset($_POST["idVal"])? limpiarCadena($_POST["idVal"]):"";
 
 switch($_GET["op"]){
     case 'guardaryeditar':
-    clearstatcache();
-        $ext = explode(".", $_FILES["fotosRec"]["name"]);
+            $ext = explode(".", $_FILES["fotosRec"]["name"]);
         if (!file_exists($_FILES['fotosRec']['tmp_name']) || !is_uploaded_file($_FILES['fotosRec']['tmp_name']))
         {
             $foto="";
@@ -42,14 +41,14 @@ switch($_GET["op"]){
                 clearstatcache();
             }
         }
-
+        
         if(empty($id)){
-            $respuesta=$receptores->insertar($nombre,$apellido,$dni,$cel,$correo,$cMedico_id,$tsangre_id,
-            $necesita,$progreso,$descripcion,$caso,$foto,$codigo);
+            $respuesta=$receptores->insertar($nombre,$apellido,$dni,$cel,$fnac,$cMedico_id,$tsangre_id,
+            $necesita,$progreso,$descripcion,$caso,$foto,$codigo,$idDon);/************* */
             echo $respuesta ? "Receptor registrado" : "Receptor no se pudo registrar";
         }else{
-            $respuesta=$receptores->editar($id,$nombre,$apellido,$dni,$cel,$correo,$cMedico_id,$tsangre_id,
-            $necesita,$progreso,$descripcion,$caso,$foto,$codigo);
+            $respuesta=$receptores->editar($id,$nombre,$apellido,$dni,$cel,$fnac,$cMedico_id,$tsangre_id,
+            $necesita,$progreso,$descripcion,$caso,$foto,$codigo,$idDon);/*********** */
             echo $respuesta ? "Receptor actualizado" : "Receptor no se pudo actualizar";
         }
     break;
@@ -74,6 +73,21 @@ switch($_GET["op"]){
         echo json_encode($respuesta);
     break;
 
+    case 'mostrar2':
+        $respuesta=$receptores->mostrar2($idDon);
+        $data=Array();
+        while($reg=$respuesta->fetch_object()){
+            $data[]=array(
+                "nomRec"=>$reg->nombre,
+                "apRec"=>$reg->apellido,
+                "necRec"=>$reg->necesita,
+                "progRec"=>$reg->progreso,
+                "estadoRec"=>$reg->estado,
+            );
+        }
+        echo json_encode($data);
+    break;
+
     case'listar':
         $respuesta=$receptores->listar();
         $data=Array();
@@ -84,7 +98,7 @@ switch($_GET["op"]){
                 "1"=>$reg->apellido.' '.$reg->nombre,
                 "2"=>$reg->dni,
                 "3"=>$reg->cel,
-                "4"=>$reg->correo,
+                "4"=>$reg->fnac,
                 "5"=>$reg->cMedico,
                 "6"=>$reg->tsangre,
                 "7"=>$reg->necesita,
@@ -142,7 +156,7 @@ switch($_GET["op"]){
             "nom"=>$reg->nombre,
             "dni"=>$reg->dni,
             "cel"=>$reg->cel,
-            "mail"=>$reg->correo,
+            "fnac"=>$reg->fnac,
             "cm"=>$reg->cMedico,
             "ts"=>$reg->tsangre,
             "nec"=>$reg->necesita,
@@ -152,8 +166,8 @@ switch($_GET["op"]){
             "foto"=>$reg->foto,
             "cod"=>$reg->codigo,
             "like"=>$reg->likes,
-            "boton"=>'<a  href="pacienteView.php" class="btn btn-warning" data-toggle="modal"  
-            onclick="mostrarPac('.$reg->id.')">Click Puto</a>'
+            "boton"=>'<a  href="pacienteView.php?v1='.$reg->id.'" class="btn halfway-fab waves-effect 
+            waves-light #d32f2f red darken-2" id="" data-toggle="modal">Saber más</a>'
         );
     }
     echo json_encode($data);
@@ -162,5 +176,6 @@ switch($_GET["op"]){
     case 'mostrarPac':
     $respuesta=$receptores->mostrarPac($id);
     echo json_encode($respuesta);
+    break;
 }
 ?>

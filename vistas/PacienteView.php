@@ -1,24 +1,35 @@
 <?php
+ob_start();
+session_start();
+if(!isset($_SESSION["nomUser"]))
+{
+  header("Location:login.php");
+}else{
     require "Head.php";
+    $v1=$_GET['v1'];
+    echo "<label id='idPagAnterior' value='$v1'></label>";
 ?>
     
     <div class="row">
         <div class="col s12">
             <div class="card">
                 <div class="card-image">
-                <img src="../files/fotos_receptores/1517791567.jpg" class="responsive-img">
-                <span class="card-title" id="nomPac">Felipo Juanjillo Benites Correa</span>
+                <img src="../files/fotos_receptores/1517791567.jpg" id="perfilPacienteView" class="responsive-img">
+                <span class="card-title" id="nomPac"></span>
                 </div>
             </div>
         </div>
         <div class="col s12" id="botones">
-            <a class="btn left waves-effect waves-light #e53935 red darken-1" 
-                id="agregarBtn" onclick="">Me comprometo a donar</a>
-                
+            <form id="FormDonacion" method="POST">
+                <input type="hidden" id="receptorD" name="receptorD" value=<?php echo $v1 ?>>
+                <input type="hidden" id="donanteD" name="donanteD" value=<?php echo $_SESSION['idUser'] ?>>
+                <button class="btn left waves-effect waves-light #d32f2f red darken-2" type="submit" 
+                    id="donarBtn<?php echo $v1?>">Me comprometo a donar</button>
+            </form>
             <div>
-                <a  class="btn-margin btn-floating waves-effect waves-light red left">
+                <a  class="btn-margin btn-floating waves-effect waves-light #d32f2f red darken-2 left">
                     <i class="material-icons">favorite</i></a>
-                <a class="btn-margin btn-floating waves-effect waves-light red left">
+                <a class="btn-margin btn-floating waves-effect waves-light #d32f2f red darken-2 left">
                     <i class="material-icons">share</i></a>
             </div>
         </div>
@@ -27,11 +38,12 @@
     <div class="row #eceff1 blue-grey lighten-5">
         <div class="col" id="noSe">
             <h6>¿Quién es?</h6>
+            
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label id="perro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias quis quos minus, sapiente non itaque aliquam vero numquam labore tempora. Asperiores earum pariatur aliquid iusto rem perspiciatis possimus, repellat excepturi!</label>
+            <label id="quienEs"></label>
         </div>
     </div>
     <div class="row #eceff1 blue-grey lighten-5">
@@ -41,7 +53,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <label id="quePaso">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias quis quos minus, sapiente non itaque aliquam vero numquam labore tempora. Asperiores earum pariatur aliquid iusto rem perspiciatis possimus, repellat excepturi!</label>
+            <label id="quePaso"></label>
         </div>
     </div>
     <div class="row #eceff1 blue-grey lighten-5">
@@ -50,10 +62,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
-        <iframe width="100%" height="200" frameborder="0" style="border:0" 
-        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJH9jXFXAQSpARErmrONIA_wU&key=AIzaSyAQWH6jkogoQcjvgomKKgDafCd1Vw80lt0" 
-        allowfullscreen></iframe>
+        <div class="col s12" id="mapaDiv">
+        
         </div>
     </div>
     <div class="row #eceff1 blue-grey lighten-5">
@@ -63,10 +73,17 @@
     </div>
     <div class="row">
         <div class="col">
-            <label id="horarioPac">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias quis quos minus, sapiente non itaque aliquam vero numquam labore tempora. Asperiores earum pariatur aliquid iusto rem perspiciatis possimus, repellat excepturi!</label>
+            <label id="horarioPac"></label>
         </div>
     </div>
+    <h4>1</h4>
+    <script src="../public/js/jquery-3.3.1.js"></script>
+    <script src="scripts/pacienteView.js"></script>
     
     <?php
     require "Foot.php";
-?>
+    ?>
+    <?php
+}
+ob_end_flush();
+  ?>

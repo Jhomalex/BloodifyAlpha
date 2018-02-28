@@ -1,16 +1,16 @@
 <?php
+ob_start();
+session_start();
+if(!isset($_SESSION["nomUser"]))
+{
+  header("Location:login.php");
+}else{
 require "Head.php";
 ?>
 <div class="row">
     <div class="row" id="cuadroDeHonor">
       <div class="col">
-      <?php
-    function hola(){
-      session_start();
-    echo $_SESSION['variable'];
-    }
-    ?>
-      <p class="label" id="">Necesitan de ti...</p>
+      <p class="label" id="perro">Necesitan de ti...</p>
       </div>
     </div>
 
@@ -41,4 +41,8 @@ require "Head.php";
   
   <?php
   require "Foot.php";
+  ?>
+  <?php
+}
+ob_end_flush();
   ?>

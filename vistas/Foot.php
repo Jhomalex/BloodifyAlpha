@@ -1,19 +1,19 @@
     <div id="menuInferior" class="row navbar-fixed">
-        <nav class="#e53935 red darken-1 nav-center">
+        <nav class="#d32f2f red darken-2 nav-center">
         <div class="nav-wrapper container">
         <ul id="contenidoMenuInferior">
             <li>
-                <a href="#" class="center">
+                <a href="body.php" class="center">
                 <i class="material-icons">search</i>
                 </a>  
             </li>
             <li>
-                <a href="#" class="center">
+                <a href="perfil.php" class="center">
                 <i class="material-icons">person_pin</i>
                 </a>
             </li>
             <li>
-                <a href="#" class="center">
+                <a href="centroMedico.php" class="center">
                 <i class="material-icons">room</i>
                 </a>
             </li>
@@ -23,7 +23,7 @@
                 </a>        
             </li-->
             <li>
-                <a href="#" class="center">
+                <a href="RegistroPaciente.php" class="center">
                 <i class="material-icons">control_point</i>
                 </a>
             </li>
@@ -34,8 +34,8 @@
 
     <script src="../public/js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../public/js/materialize.js"></script>
+    <script src="../public/js/bootbox.min.js"></script>
     <script type="text/javascript" src="scripts/principal.js"></script>
-    <script src="scripts/pacienteView.js"></script>
     
 </body>
 </html>

@@ -3,7 +3,7 @@
 define("DB_HOST","127.0.0.1");
 
 //Nombre de la BD
-define("DB_NAME","bloodifydb");
+define("DB_NAME","siga");
 
 //Usuario de la BD
 define("DB_USERNAME","root");
@@ -15,5 +15,5 @@ define("DB_PASS","");
 define("DB_ENCODE","utf8");
 //AIzaSyATZHIQN_MTIltPSz_Ypi27IGTD90C_gAQ 
 //Nombre del Proyecto
-define("PRO_NOMBRE","Bloodify");
+define("PRO_NOMBRE","SIGA");
 ?>

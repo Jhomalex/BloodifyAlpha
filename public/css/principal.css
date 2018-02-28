@@ -23,6 +23,24 @@ body,html{
 #menuSuperior{
     background-image: url('../../files/fondo.jpg');
 }
+.menuMenu{
+    background-image: url('../../files/fondo.jpg');
+    height: 200px;
+    filter: blur(3px) brightness(0.9);
+    z-index: -1;
+}
+.perfilMenu{
+    position:fixed;
+    z-index: 2;
+    left: 180px;
+    top: 70px;
+}
+.nombreMenu{
+    position:fixed;
+    z-index: 2;
+    left: 180px;
+    top: 145px;
+}
 #cuadroDeHonor{
     background-color: #d4d4d4;
     

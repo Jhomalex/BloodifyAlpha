@@ -15,7 +15,7 @@ require "Cabeza.php";
                         <th>Apellidos y Nombres</th>
                         <th>DNI</th>
                         <th>Celular</th>
-                        <th>Correo</th>
+                        <th>fnac</th>
                         <th>C. Médico</th>
                         <th>T. Sangre</th>
                         <th>Necesita</th>
@@ -47,8 +47,8 @@ require "Cabeza.php";
                             placeholder="DNI" maxLength="20" required>
                             <input type="text" class="form-control input-sm" id="celRec" name="celRec"
                             placeholder="Celular" maxLength="20" required>
-                            <input type="text" class="form-control input-sm" id="correoRec" name="correoRec"
-                            placeholder="Correo" maxLength="200" required>
+                            <input type="text" class="form-control input-sm" id="fnacRec" name="fnacRec"
+                            placeholder="fnac" maxLength="200" required>
                             <div class="form-group">
                                 <label>Centro Médico</label>
                                 <select id="cMedicoRec" class="form-control" name="cMedicoRec" required></select>

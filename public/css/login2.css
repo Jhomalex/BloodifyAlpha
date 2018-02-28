@@ -1,0 +1,40 @@
+body{
+   background-image: url(../../files/fondo2.jpg);
+   background-size: cover;
+}
+
+.login-form{
+   margin-top: 60px;
+   border-radius: 5px;
+   padding-bottom: 20px;
+}
+
+.titulo{
+   padding: 10px;
+   text-align: center;
+   color: #fff;
+   border-radius: 0px 0px 0px 10px;
+}
+
+#texto1{
+   color:#fff;
+   font-size: 18px;
+}
+#texto2{
+   color:#fff;
+   font-size: 18px;
+}
+#usuario{
+   border-bottom: 1px solid #fff;
+   color:#fff;
+}
+#pass{
+   border-bottom: 1px solid #fff;
+   color:#fff;
+}
+#resgistrarse{
+   color:#fff;
+   font-size: 16px;
+   border-bottom: 1px dotted #fff;
+}
+

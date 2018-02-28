@@ -27,7 +27,7 @@ function limpiarRec(){
     $("#apRec").val("");
     $("#dniRec").val("");
 	$("#celRec").val("");
-    $("#correoRec").val("");
+    $("#fnacRec").val("");
     $("#cMedicoRec").val("");
     $("#tsangreRec").val("");
     $("#necesitaRec").val("");
@@ -105,7 +105,7 @@ function mostrarRec(id){
         $("#apRec").val(data.apellido);
         $("#dniRec").val(data.dni);
         $("#celRec").val(data.cel);
-        $("#correoRec").val(data.correo);
+        $("#fnacRec").val(data.fnac);
         $("#cMedicoRec").val(data.cMedico_id);
         $("#tsangreRec").val(data.tsangre_id);
         $("#necesitaRec").val(data.necesita);

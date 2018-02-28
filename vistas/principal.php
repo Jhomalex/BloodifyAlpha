@@ -1,3 +1,11 @@
+<?php
+ob_start();
+session_start();
+if(!isset($_SESSION["nomUser"]))
+{
+  header("Location:login.php");
+}else{
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -68,7 +76,7 @@
   </div>
   <h5>1</h5>
   <div id="menuInferior" class="row navbar-fixed">
-    <nav class="#e53935 red darken-1 nav-center">
+    <nav class="#d32f2f red darken-2 nav-center">
       <div class="nav-wrapper container">
       <ul id="contenidoMenuInferior">
           <li>
@@ -108,3 +116,8 @@
     
 </body>
 </html>
+
+<?php
+}
+ob_end_flush();
+  ?>

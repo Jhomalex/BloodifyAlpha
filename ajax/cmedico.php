@@ -70,6 +70,20 @@ switch($_GET["op"]){
 
         echo json_encode($result);
     break;
+
+    case 'listar2':
+    $respuesta=$cmedico->listar();
+    $data=Array();
+    while($reg=$respuesta->fetch_object()){
+        $data[]=array(
+            "id"=>$reg->id,
+            "nom"=>$reg->nombre,
+            "ub"=>$reg->ubicacion,
+            "ho"=>$reg->horario,
+        );
+    }
+    echo json_encode($data);
+    break;
 }
 ?>
 
