@@ -17,6 +17,7 @@ $fnac=isset($_POST["fnacDon"])? limpiarCadena($_POST["fnacDon"]):"1";
 $ubicacion=isset($_POST["ubicacionDon"])? limpiarCadena($_POST["ubicacionDon"]):"";
 $foto=isset($_POST["fotoDon"])? limpiarCadena($_POST["fotoDon"]):"";
 $estado=isset($_POST["estadoDon"])? limpiarCadena($_POST["estadoDon"]):"";
+$sms=isset($_POST["smsDon"])? limpiarCadena($_POST["smsDon"]):"";
 
 switch($_GET["op"]){
     case 'guardaryeditar':
@@ -40,11 +41,11 @@ switch($_GET["op"]){
         }
         if(empty($id)){
             $respuesta=$donantes->insertar($usuario,$pass,$nombre,$apellido,$dni,$cel,$correo,$tsangre_id,
-            $fnac,$ubicacion,$foto);
+            $fnac,$ubicacion,$foto,$sms);
             echo $respuesta ? "Donante registrado" : "Donante no se pudo registrar";
         }else{
             $respuesta=$donantes->editar($id,$usuario,$pass,$nombre,$apellido,$dni,$cel,$correo,$tsangre_id,
-            $fnac,$ubicacion,$foto);
+            $fnac,$ubicacion,$foto,$sms);
             echo $respuesta ? "Donante actualizado" : "Donante no se pudo actualizar";
         }
     break;

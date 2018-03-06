@@ -6,12 +6,12 @@ class Donantes{
 
     }
     public function insertar($usuario,$pass,$nombre,$apellido,$dni,$cel,$correo,
-    $tsangre_id,$fnac,$ubicacion,$foto){
+    $tsangre_id,$fnac,$ubicacion,$foto,$sms){
         //$fnac2=date('Y-m-d',strtotime($fnac));
         $sql="INSERT INTO donante(usuario,pass,nombre,apellido,dni,cel,correo,tsangre_id,
-        fnac,ubicacion,foto,estado) 
+        fnac,ubicacion,foto,estado,sms) 
         VALUES ('$usuario','$pass','$nombre','$apellido','$dni','$cel','$correo','$tsangre_id',
-        '$fnac','$ubicacion','$foto','1')";
+        '$fnac','$ubicacion','$foto','1','$sms')";
         return ejecutarConsulta($sql);
     }
     public function editar($id,$usuario,$pass,$nombre,$apellido,$dni,$cel,$correo,
