@@ -4,7 +4,7 @@ require_once '../models/Donacion.php';
 $donacion = new Donacion();
 $fechaActual=getdate();
 $id=isset($_POST["idD"])? limpiarCadena($_POST["idD"]):"";
-$idDon=isset($_POST["donanteD"])? limpiarCadena($_POST["donanteD"]):"";
+$idDon=isset($_POST["donanteD"])? limpiarCadena($_POST["donanteD"]):"59";
 $idRec=isset($_POST["receptorD"])? limpiarCadena($_POST["receptorD"]):"";
 $tiempoServidor=getdate();
 $d = $tiempoServidor['mday'];
@@ -68,7 +68,8 @@ switch($_GET["op"]){
     break;
 
     case 'listar':
-        $respuesta=$donacion->listar($idDon);
+    echo $idDon;
+        $respuesta=$donacion->listar();
         $data=Array();
         while($reg=$respuesta->fetch_object()){
             $data[]=array(

@@ -115,8 +115,8 @@ switch($_GET["op"]){
     break;
 
     case 'verificarUsuario':
-        $usuario=isset($_POST["usuario"])? limpiarCadena($_POST["usuario"]):"angie@chata.com";
-        $pass=isset($_POST["pass"])? limpiarCadena($_POST["pass"]):"123chata";
+        $usuario=isset($_POST["usuario"])? limpiarCadena($_POST["usuario"]):"";
+        $pass=isset($_POST["pass"])? limpiarCadena($_POST["pass"]):"";
 
         $respuesta=$donantes->verificar($usuario,$pass);
         $fetch=$respuesta->fetch_object();

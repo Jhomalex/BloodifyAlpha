@@ -41,14 +41,16 @@ class Donacion{
         WHERE b.id='$id'";
         return ejecutarConsulta($sql);
     }
-    public function listar($id){
+    public function listar(){
+        $id=$_SESSION['idUser'];
+        echo $id;
         $sql="SELECT a.id, a.fdonacion, a.estado, b.nombre as nomDon, b.apellido as apDon, 
         c.nombre as nomRec, c.codigo as codigo, c.apellido as apRec,b.id as idDon,
         (SELECT d.nombre FROM cMedico d WHERE d.id=c.cMedico_id) as cMedico 
         FROM donacion a 
         INNER JOIN donante b ON a.donante_id = b.id 
         INNER JOIN receptor c ON a.receptor_id = c.id
-        WHERE b.id='$id'";
+        WHERE b.id=$id";
         return ejecutarConsulta($sql);
     }
     public function verificar($idDon,$idRec){

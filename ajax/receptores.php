@@ -1,6 +1,7 @@
 <?php
 require_once "../models/Receptores.php";
-
+ob_start();
+session_start();
 $receptores=new Receptores();
 
 $id=isset($_POST["idRec"])? limpiarCadena($_POST["idRec"]):"";
@@ -17,7 +18,7 @@ $descripcion=isset($_POST["descripcionRec"])? limpiarCadena($_POST["descripcionR
 $caso=isset($_POST["casoRec"])? limpiarCadena($_POST["casoRec"]):"";
 $foto=isset($_POST["fotosRec"])? limpiarCadena($_POST["fotosRec"]):"";
 $codigo=isset($_POST["codigoRec"])? limpiarCadena($_POST["codigoRec"]):"";
-$idDon=isset($_POST["donanteD"])? limpiarCadena($_POST["donanteD"]):"59";//********** */
+$idDon=$_SESSION['idUser'];//********** */
 $likes=isset($_POST["likesRec"])? limpiarCadena($_POST["likesRec"]):"";
 $estado=isset($_POST["estadoRec"])? limpiarCadena($_POST["estadoRec"]):"";
 
@@ -78,6 +79,7 @@ switch($_GET["op"]){
         $data=Array();
         while($reg=$respuesta->fetch_object()){
             $data[]=array(
+                "idRec"=>$reg->id,
                 "nomRec"=>$reg->nombre,
                 "apRec"=>$reg->apellido,
                 "necRec"=>$reg->necesita,
@@ -176,6 +178,11 @@ switch($_GET["op"]){
     case 'mostrarPac':
     $respuesta=$receptores->mostrarPac($id);
     echo json_encode($respuesta);
+    break;
+
+    case 'aumentarVistas':
+        $respuesta=$receptores->aumentarVistas($id);
+        echo $respuesta ? "1" : "0";
     break;
 }
 ?>
