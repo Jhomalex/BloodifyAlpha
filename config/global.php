@@ -3,7 +3,7 @@
 define("DB_HOST","127.0.0.1");
 
 //Nombre de la BD
-define("DB_NAME","bloodifydb");
+define("DB_NAME","bloodify");
 
 //Usuario de la BD
 define("DB_USERNAME","root");

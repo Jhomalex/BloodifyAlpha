@@ -1,7 +1,8 @@
 <?php
 //Conexion a la BD
 require "../config/conexion.php";
-
+ob_start();
+session_start();
 class Donacion{
     public  function _construct(){
 
@@ -43,7 +44,6 @@ class Donacion{
     }
     public function listar(){
         $id=$_SESSION['idUser'];
-        echo $id;
         $sql="SELECT a.id, a.fdonacion, a.estado, b.nombre as nomDon, b.apellido as apDon, 
         c.nombre as nomRec, c.codigo as codigo, c.apellido as apRec,b.id as idDon,
         (SELECT d.nombre FROM cMedico d WHERE d.id=c.cMedico_id) as cMedico 
@@ -62,5 +62,12 @@ class Donacion{
         WHERE b.id='$idDon' AND c.id='$idRec'";
         return ejecutarConsulta($sql);
     }
+    public function listarCompatibles($idRec){
+        $idTsDon=$_SESSION['tsangreId'];
+        $sql="SELECT * FROM `compatibilidad` WHERE id_receptor=(SELECT tsangre_id FROM receptor 
+        WHERE id=$idRec) AND id_donante=$idTsDon";
+        return ejecutarConsulta($sql);
+    }
 }
+ob_end_flush();
 ?>

@@ -9,7 +9,7 @@ $('#formAcceso').on('submit',function(e){
    },
    function (data){
       if(data!="null"){
-         $(location).attr("href","Body.php");
+         $(location).attr("href","body.php");
       }else{
          var $toastContent = $('<span>El usuario o password ingresado es incorrecto</span>').add($('<button class="btn-flat toast-action">Desliza</button>'));
          Materialize.toast($toastContent, 10000)

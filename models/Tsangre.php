@@ -4,7 +4,6 @@ require "../config/conexion.php";
 
 class Tsangre{
     public  function _construct(){
-
     }
     public function insertar($nombre){
         $sql="INSERT INTO tsangre(nombre) VALUES ('$nombre')";
@@ -31,5 +30,16 @@ class Tsangre{
         return ejecutarConsulta($sql);
     }
     
+    /*CREATE TABLE compatibilidad
+(
+    id INT AUTO_INCREMENT NOT NULL,
+    id_receptor INT,
+    id_donante  INT,
+    PRIMARY KEY(id),
+    INDEX (id_donante),
+    INDEX (id_receptor),
+    FOREIGN KEY (id_donante) REFERENCES tsangre(id),
+    FOREIGN KEY (id_receptor) REFERENCES tsangre(id)
+);*/
 }
 ?>

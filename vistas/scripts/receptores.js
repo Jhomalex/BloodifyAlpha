@@ -149,5 +149,4 @@ function mostrarPac(id){
 		 $("#horarioPac").html(data.horario);
 	})
 }
-
 init();

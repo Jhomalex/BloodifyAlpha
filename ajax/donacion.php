@@ -4,7 +4,7 @@ require_once '../models/Donacion.php';
 $donacion = new Donacion();
 $fechaActual=getdate();
 $id=isset($_POST["idD"])? limpiarCadena($_POST["idD"]):"";
-$idDon=isset($_POST["donanteD"])? limpiarCadena($_POST["donanteD"]):"59";
+$idDon=isset($_POST["donanteD"])? limpiarCadena($_POST["donanteD"]):"";
 $idRec=isset($_POST["receptorD"])? limpiarCadena($_POST["receptorD"]):"";
 $tiempoServidor=getdate();
 $d = $tiempoServidor['mday'];
@@ -97,6 +97,12 @@ switch($_GET["op"]){
         $idDon=$_POST['donanteD'];
         $idRec=$_POST['receptorD'];
         $respuesta=$donacion->verificar($idDon,$idRec);
+        $fetch=$respuesta->fetch_object();
+        echo json_encode ($fetch);
+    break;
+    
+    case 'filtrarDonacion':
+        $respuesta=$donacion->listarCompatibles($idRec);
         $fetch=$respuesta->fetch_object();
         echo json_encode ($fetch);
     break;

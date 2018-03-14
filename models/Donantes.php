@@ -45,7 +45,7 @@ class Donantes{
         return ejecutarConsulta($sql);
     }
     public function verificar($usuario,$pass){
-        $sql="SELECT a.id,a.usuario,a.apellido,a.nombre,a.dni,a.cel,c.nombre as tsangre,
+        $sql="SELECT a.id,a.usuario,a.apellido,a.nombre,a.dni,a.cel,c.nombre as tsangre,a.tsangre_id as idts,
         a.fnac,a.foto,a.ubicacion FROM donante a INNER JOIN tsangre c ON a.tsangre_id=c.id 
         WHERE a.usuario='$usuario' AND a.pass='$pass' AND a.estado='1'";
         return ejecutarConsulta($sql);

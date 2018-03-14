@@ -38,7 +38,7 @@ $('.datepicker').pickadate({
        success:function(result){
          var $toastContent = $('<span>'+result+'</span>').add($('<button class="btn-flat toast-action">Desliza</button>'));
          Materialize.toast($toastContent, 10000);
-         location.href="login.php";
+         //location.href="login.php";
        }
    });
  }

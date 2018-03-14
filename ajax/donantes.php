@@ -39,12 +39,16 @@ switch($_GET["op"]){
                 clearstatcache();
             }
         }
+        //Hash SHA256 en la contraseña
+
+        $passhash=hash("SHA256",$pass);
+
         if(empty($id)){
-            $respuesta=$donantes->insertar($usuario,$pass,$nombre,$apellido,$dni,$cel,$correo,$tsangre_id,
+            $respuesta=$donantes->insertar($usuario,$passhash,$nombre,$apellido,$dni,$cel,$correo,$tsangre_id,
             $fnac,$ubicacion,$foto,$sms);
             echo $respuesta ? "Donante registrado" : "Donante no se pudo registrar";
         }else{
-            $respuesta=$donantes->editar($id,$usuario,$pass,$nombre,$apellido,$dni,$cel,$correo,$tsangre_id,
+            $respuesta=$donantes->editar($id,$usuario,$passhash,$nombre,$apellido,$dni,$cel,$correo,$tsangre_id,
             $fnac,$ubicacion,$foto,$sms);
             echo $respuesta ? "Donante actualizado" : "Donante no se pudo actualizar";
         }
@@ -128,6 +132,7 @@ switch($_GET["op"]){
             $_SESSION['dniUser']=$fetch->dni;
             $_SESSION['celUser']=$fetch->cel;
             $_SESSION['tsangreUser']=$fetch->tsangre;
+            $_SESSION['tsangreId']=$fetch->idts;
             $_SESSION['fnacUser']=$fetch->fnac;
             $_SESSION['fotoUser']=$fetch->foto;
             $_SESSION['ubicacionUser']=$fetch->ubicacion;

@@ -15,7 +15,7 @@ function limpiarCM(){
     $("#codUbicacionCM").val("");
     $("#horarioCM").val("");
 }
-
+sandoval_1995@hotmail.com
 function listarCM()
 {
 	tabla=$('#tblCentroMedico').dataTable(

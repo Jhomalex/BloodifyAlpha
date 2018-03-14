@@ -20,7 +20,7 @@ function mostrarPac(id){
    });
  }
 
- function donacion(e){
+ function donacion2(e){
   e.preventDefault();
    var miData = new FormData($('#FormDonacion')[0]);
    $.ajax({
@@ -36,6 +36,42 @@ function mostrarPac(id){
          verificarDonacion();
        }
    });
+ }
+
+ function donacion(e){
+    e.preventDefault();
+    var miData = new FormData($('#FormDonacion')[0]);
+    $.ajax({
+        type:"POST",
+        url:"../ajax/donacion.php?op=filtrarDonacion",
+        data:miData,
+        cache:false,
+        contentType:false,
+        processData:false,
+        success:function(result){
+          if(result=='null'){
+            var $toastContent = $('<span>No se puede donar</span>').add($('<button class="btn-flat toast-action">No son compatibles</button>'));
+            Materialize.toast($toastContent, 10000);
+          }else{
+            var $toastContent = $('<span>'+result+'</span>').add($('<button class="btn-flat toast-action">No son compatibles</button>'));
+            Materialize.toast($toastContent, 10000);
+            var miData = new FormData($('#FormDonacion')[0]);
+            $.ajax({
+                type:"POST",
+                url:"../ajax/donacion.php?op=guardaryeditar",
+                data:miData,
+                cache:false,
+                contentType:false,
+                processData:false,
+                success:function(result){
+                  var $toastContent = $('<span>'+result+'</span>').add($('<button class="btn-flat toast-action">Desliza</button>'));
+                  Materialize.toast($toastContent, 10000);
+                  verificarDonacion();
+                }
+            });
+          }
+        }
+    });
  }
 
  function verificarDonacion(){
@@ -56,6 +92,5 @@ function mostrarPac(id){
       }
    })
  }
- 
 
  init();
