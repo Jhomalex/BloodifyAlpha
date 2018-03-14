@@ -106,5 +106,11 @@ switch($_GET["op"]){
         $fetch=$respuesta->fetch_object();
         echo json_encode ($fetch);
     break;
+
+    case 'listarFotos':
+        $respuesta=$donacion->listarFotos($idRec);
+        $fetch=$respuesta->fetch_object();
+        echo json_encode ($fetch);
+    break;
 }
 ?>
