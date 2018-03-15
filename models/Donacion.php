@@ -70,13 +70,13 @@ class Donacion{
     }
     public function listarFotos(){
         $sql="SELECT b.foto FROM donacion a INNER JOIN donante b ON a.donante_id=b.id 
-        WHERE a.estado='1' AND b.estado='1' AND a.fdonacion BETWEEN DATE_SUB(curdate(), INTERVAL 7 DAY)
+        WHERE a.estado='1' AND b.estado='1' AND a.fdonacion BETWEEN curdate() AND DATE_SUB(curdate(), INTERVAL 7 DAY)
         AND RAND()<(SELECT ((6/COUNT(*))*10) FROM donacion) ORDER BY RAND() LIMIT 6";
         return ejecutarConsulta($sql);
         /* Para cuando tengamos donaciones: Obviar desde el usuario 59
          SELECT b.foto FROM donacion a INNER JOIN donante b ON a.donante_id=b.id 
         WHERE a.estado='1' AND b.estado='1' 
-        AND a.fdonacion BETWEEN DATE_SUB(curdate(), INTERVAL 7 DAY) AND b.id>59 
+        AND a.fdonacion BETWEEN curdate() AND DATE_SUB(curdate(), INTERVAL 7 DAY) AND b.id>59 
         AND RAND()<(SELECT ((6/COUNT(*))*10) FROM donacion) ORDER BY RAND() LIMIT 6 */
     }
 }
